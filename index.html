@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management App</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Customer Management System</h1>
+            <p>Connect to your Flask Backend API</p>
+        </header>
+
+        <!-- Auth Section -->
+        <div class="auth-section">
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="register">Register</button>
+            </div>
+
+            <div class="auth-content">
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form active">
+                    <h3>Sign In to Your Account</h3>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginUsername">Username:</label>
+                            <input type="text" id="loginUsername" required placeholder="Enter your username">
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password:</label>
+                            <input type="password" id="loginPassword" required placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn-primary">Login</button>
+                    </form>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="auth-form">
+                    <h3>Create New Account</h3>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="registerUsername">Username:</label>
+                            <input type="text" id="registerUsername" required placeholder="Choose a username">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Email:</label>
+                            <input type="email" id="registerEmail" required placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Password:</label>
+                            <input type="password" id="registerPassword" required placeholder="Choose a password (min 6 chars)">
+                        </div>
+                        <button type="submit" class="btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main App Section (shown after login) -->
+        <div id="app-section" class="hidden">
+            <div class="app-header">
+                <h2>Welcome, <span id="userName">User</span>!</h2>
+                <button id="logoutBtn" class="btn-secondary">Logout</button>
+            </div>
+
+            <div class="app-tabs">
+                <button class="app-tab active" data-tab="profile">Profile</button>
+                <button class="app-tab" data-tab="users">All Users</button>
+            </div>
+
+            <div class="app-content">
+                <!-- Profile Tab -->
+                <div id="profile-tab" class="app-tab-content active">
+                    <h3>Your Profile Information</h3>
+                    <div class="profile-card">
+                        <div class="profile-info">
+                            <p><strong>ID:</strong> <span id="profileId">-</span></p>
+                            <p><strong>Username:</strong> <span id="profileUsername">-</span></p>
+                            <p><strong>Email:</strong> <span id="profileEmail">-</span></p>
+                            <p><strong>Joined:</strong> <span id="profileJoined">-</span></p>
+                        </div>
+                    </div>
+                    <button id="refreshProfileBtn" class="btn-secondary">Refresh Profile</button>
+                </div>
+
+                <!-- Users Tab -->
+                <div id="users-tab" class="app-tab-content">
+                    <h3>All Registered Users</h3>
+                    <button id="loadUsersBtn" class="btn-primary">Load Users</button>
+                    <div id="usersList" class="users-grid">
+                        <p>Click "Load Users" to see all registered users</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="statusMessage" class="status-message hidden"></div>
+
+        <!-- API Status -->
+        <div class="api-status">
+            <span id="apiStatus">API: Disconnected</span>
+            <span id="authStatus">Auth: Not logged in</span>
+        </div>
+    </div>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html>
