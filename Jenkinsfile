@@ -25,7 +25,7 @@ pipeline {
         stage('Verify Static Website Files') {
             steps {
                 script {
-                    staticSiteCheck(dir: 'website')
+                    frontendBuild(dir: 'website')
                 }
             }
         }
@@ -40,5 +40,6 @@ pipeline {
         }
     }
 }
+
 
 
