@@ -4,7 +4,7 @@ pipeline {
     agent any
 
     environment {
-        GIT_CREDENTIALS_ID = 'github-ssh'
+        GIT_CREDENTIALS_ID = 'ssh-key'
         FRONTEND_REPO_URL  = 'git@github.com:rohithreddygundreddy/flask-frontend.git'
     }
 
@@ -40,4 +40,5 @@ pipeline {
         }
     }
 }
+
 
