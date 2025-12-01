@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         GIT_CREDENTIALS_ID = 'github-ssh'
-        FRONTEND_REPO_URL  = 'git@github.com:your-username/your-static-repo.git'
+        FRONTEND_REPO_URL  = 'git@github.com:rohithreddygundreddy/flask-frontend.git'
     }
 
     stages {
@@ -40,3 +40,4 @@ pipeline {
         }
     }
 }
+
