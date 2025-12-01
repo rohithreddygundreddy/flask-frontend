@@ -1,0 +1,42 @@
+@Library('devops') _
+
+pipeline {
+    agent any
+
+    environment {
+        GIT_CREDENTIALS_ID = 'github-ssh'
+        FRONTEND_REPO_URL  = 'git@github.com:your-username/your-static-repo.git'
+    }
+
+    stages {
+        stage('Checkout Static Website') {
+            steps {
+                script {
+                    repoCheckout(
+                        repoUrl: FRONTEND_REPO_URL,
+                        branch: 'main',
+                        credentialsId: GIT_CREDENTIALS_ID,
+                        dir: 'website'
+                    )
+                }
+            }
+        }
+
+        stage('Verify Static Website Files') {
+            steps {
+                script {
+                    staticSiteCheck(dir: 'website')
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "🎉 Your HTML/CSS/JS project is valid!"
+        }
+        failure {
+            echo "❌ Something is missing or incorrect. Check console output."
+        }
+    }
+}
